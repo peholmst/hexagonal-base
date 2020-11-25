@@ -15,7 +15,7 @@
  *
  */
 
-package net.pkhapps.hexagonal.domain.base.annotation;
+package net.pkhapps.hexagonal.application.base.annotation;
 
 import org.springframework.stereotype.Component;
 
@@ -25,11 +25,17 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Specialization of the {@link Component} annotation indicating that the annotated bean is a domain service.
+ * Specialization of the {@link Component} annotation indicating that the annotated bean is a worker. A worker
+ * interacts with the domain model (typically through domain services) and with
+ * {@linkplain ApplicationServiceDelegate application service delegates} on a regular basis, for example through
+ * {@linkplain org.springframework.scheduling.annotation.Scheduled scheduled} or continuously running jobs such as
+ * consumer or producer threads.
+ *
+ * @see Orchestrator
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Component
-public @interface DomainService {
+public @interface Worker {
     String value() default "";
 }

@@ -15,7 +15,7 @@
  *
  */
 
-package net.pkhapps.hexagonal.domain.base.annotation;
+package net.pkhapps.hexagonal.application.base.annotation;
 
 import org.springframework.stereotype.Component;
 
@@ -25,11 +25,16 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Specialization of the {@link Component} annotation indicating that the annotated bean is a domain service.
+ * Specialization of the {@link Component} annotation indicating that the annotated bean is an application service.
+ * Application services control transactions and enforce security. They interact with the domain model and with
+ * {@linkplain ApplicationServiceDelegate application service delegates}. They form ports through which outside clients
+ * can interact with the system.
+ *
+ * @see ApplicationServiceDelegate
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Component
-public @interface DomainService {
+public @interface ApplicationService {
     String value() default "";
 }

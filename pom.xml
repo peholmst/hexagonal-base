@@ -45,12 +45,14 @@
         <maven.compiler.source>11</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <spring-data-jpa.version>2.4.1</spring-data-jpa.version>
+        <spring-data.version>2.4.1</spring-data.version>
+        <spring.version>5.3.1</spring.version>
         <javax.persistence-api.version>2.2</javax.persistence-api.version>
         <hibernate-core.version>5.4.24.Final</hibernate-core.version>
     </properties>
 
     <modules>
+        <module>application-base</module>
         <module>domain-base</module>
         <module>domain-hibernate</module>
     </modules>
@@ -60,7 +62,12 @@
             <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-jpa</artifactId>
-                <version>${spring-data-jpa.version}</version>
+                <version>${spring-data.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
             </dependency>
             <dependency>
                 <groupId>javax.persistence</groupId>

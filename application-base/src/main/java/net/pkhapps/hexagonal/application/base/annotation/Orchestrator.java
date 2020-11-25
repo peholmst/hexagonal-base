@@ -15,7 +15,7 @@
  *
  */
 
-package net.pkhapps.hexagonal.domain.base.annotation;
+package net.pkhapps.hexagonal.application.base.annotation;
 
 import org.springframework.stereotype.Component;
 
@@ -25,11 +25,17 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Specialization of the {@link Component} annotation indicating that the annotated bean is a domain service.
+ * Specialization of the {@link Component} annotation indicating that the annotated bean is an orchestrator. An
+ * orchestrator interacts with the domain model (typically through domain services) and with
+ * {@linkplain ApplicationServiceDelegate application service delegates} in response to domain events. An orchestrator
+ * typically controls transactions but only enforces security when it makes sense, taking into account that some of the
+ * events may have been published by a background thread running without a security context.
+ *
+ * @see Worker
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Component
-public @interface DomainService {
+public @interface Orchestrator {
     String value() default "";
 }

@@ -15,7 +15,7 @@
  *
  */
 
-package net.pkhapps.hexagonal.domain.base.annotation;
+package net.pkhapps.hexagonal.application.base.annotation;
 
 import org.springframework.stereotype.Component;
 
@@ -25,11 +25,19 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Specialization of the {@link Component} annotation indicating that the annotated bean is a domain service.
+ * Specialization of the {@link Component} annotation indicating that the annotated bean is an application service
+ * delegate. Application service delegates are shared by multiple {@linkplain ApplicationService application services},
+ * {@linkplain Worker workers} and {@linkplain Orchestrator orchestrators},
+ * and perform the same duties (or parts thereof) as application services, but must never be invoked directly by
+ * clients. They can choose to handle transactions and security themselves or let their callers take care of that.
+ *
+ * @see ApplicationService
+ * @see Orchestrator
+ * @see Worker
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Component
-public @interface DomainService {
+public @interface ApplicationServiceDelegate {
     String value() default "";
 }
