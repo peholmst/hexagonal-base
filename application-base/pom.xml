@@ -26,7 +26,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>application-base</artifactId>
+    <artifactId>hexagonal-application-base</artifactId>
     <name>Application Layer Base Classes</name>
 
     <dependencies>
