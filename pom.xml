@@ -23,7 +23,7 @@
 
     <groupId>net.pkhapps.hexagonal</groupId>
     <artifactId>hexagonal-base</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>2020.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <contributors>
@@ -101,5 +101,12 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.8.1</version>
+            </plugin>
+        </plugins>
     </build>
 </project>
